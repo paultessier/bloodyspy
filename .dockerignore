@@ -1,0 +1,12 @@
+tmp_img
+tmp_img/*
+# models/*
+# resources/*
+data_sample
+data_sample/*
+docker.sh
+# data_unlabelled
+# data_unlabelled/*
+LICENSE
+README.md
+.gitignore
