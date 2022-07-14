@@ -1,8 +1,12 @@
 from fastapi import FastAPI, HTTPException, Request, File, UploadFile
-from pydantic import BaseModel
-from typing import Optional
-# import numpy as np
-import pandas as pd
+from typing import List
+# from pydantic import BaseModel
+# from typing import Optional
+import cv2
+import tensorflow as tf
+# from keras.preprocessing import image
+import numpy as np
+# import pandas as pd
 
 # interface graphique de l'API
 # http://localhost:8000/docs
@@ -11,78 +15,44 @@ import pandas as pd
 # Manifeste OpenAPI (Json des fonctions)
 # http://localhost:8000/openapi.json
 
+# import os
+# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+#SOLVING ISSUE : rebuild TensorFlow with the appropriate compiler flags
+#Your kernel may have been built without NUMA support
+
 
 api = FastAPI(
-    title="API - test questions",
-    description="This API, powered by FastAPI, aims to manage a serie of tests.",
-    version="1.0.1")
+    title="API - bloody spy",
+    description="This API aims to categorize blood cells",
+    version="1.0.1",
+    # port =8001
+)
 
-test_db = pd.read_csv('questions.csv')
 
-creds = {
-  "alice": "wonderland",
-  "bob": "builder",
-  "clementine": "mandarine",
-  "admin":"4dm1N"
-}
+# ==== PARAMETERS ===================================================================
 
-rights = {
-  "alice": "read",
-  "bob": "read",
-  "clementine": "read",
-  "admin":"admin"
-}
+# On crée la liste des noms des différents dossiers de types de cellules présents dans le dossier data_samples
+cell_types = ['neutrophil', 'eosinophil', 'ig', 'platelet', 'erythroblast', 'monocyte','basophil','lymphocyte']
+# On crée la liste des noms des différentes types de cellules que l'on souhaite afficher à l'avenir
+cell_types2 = ['neutrophil', 'eosinophil', 'immature granulocyte', 'platelet', 'erythroblast', 'monocyte','basophil','lymphocyte']
 
-class Test(BaseModel):
-    use: str
-    subjects: Optional[list]
-    N_questions: Optional[int]
-
-class Question(BaseModel):
-    question: str
-    use: str
-    subject: str
-    correct: str
-    repA: str
-    repB: str
-    repC: str
-    repD: Optional[str]
-    remark: Optional[str]
-
-    
 
 # ==== API STATUS ===================================================================
 
-@api.get('/api/public_status', name='Verify status of the API')
+@api.get('/api/status', name='Verify status of the API')
 def get_status():
     """Returns a success status if the API is working.
     """
     return {
-  "status": "success",
-  "msg": "Hello from a public endpoint! You don't need to be authenticated to see this."
-}
+            "status": "success",
+            "message": "Hello from a public endpoint! You don't need to be authenticated to see this."
+    }
 
-
-
-# curl -X GET -i 'http://127.0.0.1:8000/api/public_status'
-
-
-
-
-# ===== AUTHENTIFICATION TEST ===================================================================
-@api.get('/auth', name='Get all uses and subjects')
-def get_headers(req: Request):
-    auth=req.headers["authorization"]
-    username=auth.split('=')[0]
-    pwd=auth.split('=')[1]
-    return {'detail':req.headers,'auth':auth,'user':username,'pwd':pwd}
-
-# curl -X GET -i 'http://127.0.0.1:8000/auth' -H 'authorization:alice=wonderland'
 
 # ===== INFO ROUTES ===================================================================
 
 # -------------------------------------------------------------------
-# 1/ Upload files
+# 1/ Upload file
 # -------------------------------------------------------------------
 
 @api.post("/files/")
@@ -91,200 +61,80 @@ async def create_file(file: bytes = File()):
 
 @api.post("/uploadfile/")
 async def create_upload_file(file: UploadFile):
-    return {"filename": file.filename}
 
-# -------------------------------------------------------------------
-# 1/ Get information on all uses available in the test database
-# -------------------------------------------------------------------
+    if not file:
+        return {"message": "No upload file sent"}
+    
+    extension = file.filename.split('.')[-1]
+    tmp_filename = f"tmp/tmp_img.{extension}"
+    with open(tmp_filename, "wb+") as file_object:
+        file_object.write(file.file.read())
 
-@api.get('/tests', name='Get all types of tests')
-def get_test_uses():
-    """Returns all uses of the test database.
-    """
-    # uses = [x for x in test_db.use.unique()]
-    uses = list(test_db.use.unique())
-    return {'uses':uses}
+    # On stocke l'image en RGB
+    img_rgb = cv2.imread(tmp_filename,cv2.IMREAD_COLOR)
+    img_rgb = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2RGB)
 
-# curl -X GET -i 'http://127.0.0.1:8000/tests'
+    # resize and filter
+    img_f = cv2.resize(img_rgb,dsize = (60,60))
 
-# -------------------------------------------------------------------
-# 2/ Get information on all subjects available for a specific use
-# -------------------------------------------------------------------
+    # Normalization of pixels value
+    # img_tf = image.img_to_array(img_f)/255
+    img_tf = tf.keras.utils.img_to_array(img_f)/255
+    print(img_tf.shape)
 
-@api.post('/tests', name='Get all subjects of test for a given type of use')
-def post_test_subject(test: Test):
-    """Returns the list of subjects for a given use.
-    """
-    q2 = test_db[test_db.use == test.use]
-    subjects = list(q2.subject.unique())
+    #On ajoute une dimension à l'image
+    # img_tf = np.expand_dims(img_tf.tolist(), axis = 0)
+    # img_tf = np.expand_dims(img_tf, axis = 0)
+    img_tf = np.expand_dims(img_tf, axis = 0)
+    print(img_tf.shape)
+
+    # On charge le modèle choisit par l'utilisateur
+    k=0
+    available_models=['FS','ResNet50','VGG16','VGG19','Xception']
+    model = tf.keras.models.load_model('./models/Save_model_CNN_'+available_models[k]+'_60x60_rgb.h5')
+
+    # On stocke les valeurs de probabilité des classes de l'image
+    probas = model.predict(img_tf)[0]
+    probabilities = {c:p for c,p in zip(cell_types2,probas)}
+
+    # On stocke la classe retournée et la proba
+    pred_proba = np.max(probas)*100
+    pred_cell_type = cell_types2[np.argmax(probas)]
+
     return {
-        'use': test.use,
-        'subjects':subjects
-        }
+        "filename": file.filename,
+        "model":available_models[k],
+        "predictions":probabilities,
+        "predicted_blood_cell_type":pred_cell_type,
+        "prediction_probability":pred_proba
+    }
 
-# curl -X POST -i 'http://127.0.0.1:8000/tests' -H 'Content-Type: application/json' -d '{"use":"Test de positionnement"}'
+
+@api.post("/uploadfile2/")
+async def create_upload_file(file: UploadFile):
+    # print(dir(file))
+    extension = file.filename.split('.')[-1]
+    tmp_filename = f"tmp/tmp_img.{extension}"
+    with open(tmp_filename, "wb+") as file_object:
+        file_object.write(file.file.read())
+
+    return {
+        "filename": file.filename,
+        "content":file.content_type,
+        "file":file.file,
+        "headers":file.headers
+    }
+
 
 # -------------------------------------------------------------------
-# 3/ Get direct information of all available categories
+# 1/ Upload files
 # -------------------------------------------------------------------
 
-@api.get('/all_categories', name='Get all uses and subjects')
-def get_all_categories():
-    """Returns the list of uses and subjects.
-    """
-    d2=dict()
-    for i,u in enumerate(list(test_db.use.unique())):
-        d2['category n°'+str(i+1)]={
-        'use':u,
-        'subjects':list(test_db[test_db.use == u].subject.unique())}
-    return d2
-
-# curl -X GET -i 'http://127.0.0.1:8000/all_categories'
-
-
-# ==== CREATE A TEST ===========================================================================================
-
-@api.post('/new_test', name='Create a test')
-def post_questions(req: Request, test: Test):
-    """Returns a test with a list of N questions
-    """
-
-    # Authentification
-    auth=req.headers["authorization"]
-    username=auth.split('=')[0]
-    pwd=auth.split('=')[1]
-    print(username)
-
-    try:
-
-        auth0 = (creds[username] == pwd)
-        if auth0==False:
-            raise HTTPException(
-                status_code=401,
-                detail="Unauthorized: wrong password."
-            )
-
-    except KeyError:
-        auth0=False
-        raise HTTPException(
-            status_code=401,
-            detail='Unknown username {}.'.format(username)
-        )
-    
-    
-    if auth0:
-    
-        # Select the questions in the database, based on use, subjects and N_questions parameters
-        q = test_db[test_db.use == test.use]
-        if test.subjects:
-            q = q[q['subject'].isin(test.subjects)]
-        if test.N_questions:
-            if test.N_questions in [5,10,20]:
-                q = q.sample(n=test.N_questions,replace=True)
-            else:
-                return "You must choose a number of questions within 5, 10 or 20."
-
-        # format questions as a list
-        d = []
-        q=q.fillna("/")
-        for i in range(len(q)):
-            if q.iloc[i]['responseD'] != "/":
-                d.append({
-                    'question':q.iloc[i]['question'],
-                    'responseA':q.iloc[i]['responseA'],
-                    'responseB':q.iloc[i]['responseB'],
-                    'responseC':q.iloc[i]['responseC'],
-                    'responseD':q.iloc[i]['responseD']
-                })
-            else:
-                d.append({
-                    'question':q.iloc[i]['question'],
-                    'responseA':q.iloc[i]['responseA'],
-                    'responseB':q.iloc[i]['responseB'],
-                    'responseC':q.iloc[i]['responseC']
-                })
-
-        return {
-            'username':username,
-            'password':pwd,
-            'access':'Authorized',
-            'use':test.use,
-            'subjects':test.subjects,
-            'test':d
-            }
-
-# curl -X POST -i 'http://127.0.0.1:8000/new_test' -H 'Content-Type: application/json' -H 'authorization:alice=wonderland' -d '{"use":"Test de validation","subjects":["Classification","Automation"],"N_questions":10}'
-# curl -X POST -i 'http://127.0.0.1:8000/new_test' -H 'Content-Type: application/json' -H 'authorization:alice=wonder' -d '{"use":"Test de positionnement","subjects":["BDD"],"N_questions":5}'
-# curl -X POST -i 'http://127.0.0.1:8000/new_test' -H 'Content-Type: application/json' -H 'authorization:Toto=lasticot' -d '{"use":"Test de positionnement","subjects":["BDD"],"N_questions":5}'
-
-
-
-# ==== ADD A NEW QUESTION TO THE DATABASE ===========================================================================================
-
-@api.put('/new_question', name='Insert a new question. You need to have admin rights')
-def put_new_question(req: Request, question: Question):
-
-    # Authentification
-    auth=req.headers["authorization"]
-    username=auth.split('=')[0]
-    pwd=auth.split('=')[1]
-    print(username)
-
-    try:
-
-        auth0 = (creds[username] == pwd)
-        if auth0==False:
-            raise HTTPException(
-                status_code=401,
-                detail="Unauthorized: wrong password."
-            )
-        else:
-            auth0 = (rights[username] == 'admin')
-            if auth0==False:
-                raise HTTPException(
-                status_code=401,
-                detail="Unauthorized: you do not have admin rights.")
-
-    except KeyError:
-        auth0=False
-        raise HTTPException(
-            status_code=401,
-            detail='Unknown username {}.'.format(username)
-        )
-    
-    if auth0:
-
-        new_q = {
-            'question': question.question,
-            'subject': question.subject,
-            'use': question.use,
-            'correct': question.correct,
-            'responseA': question.repA,
-            'responseB': question.repB,
-            'responseC': question.repC,
-            'responseD': question.repD,
-            'remark':question.remark
-        }
-
-        df_new_q = pd.DataFrame(new_q,index=[len(test_db)])
-        test_db=pd.concat([test_db,df_new_q])
-
-    return {'status':'added successfully',
-            'added row to DB':new_q }
-
-
-# curl -X PUT -i 'http://127.0.0.1:8000/new_question' \
-# -H 'Content-Type: application/json' \
-# -H 'authorization:admin=4dm1N' \
-# -d '{"question":"Au cours de quel évènement historique fut crée le pancake ?", \
-#      "subject":"Streaming de données", \
-#      "use":"Test de validation", \
-#     "correct":"A,B,C,D", \
-#     "repA":"En 1618, pendant la guerre des croissants au beurre", \
-#     "repB":"En 1702, pendant le massacre de la Saint-Panini", \
-#     "repC": "En 112 avant Céline Dion, pendant la prise de la Brioche", \
-#     "repD":"La réponse D", \
-#     "remark":"C est votre ultime bafouille, Guy ?" }'
+@api.post("/uploadfiles/")
+async def create_upload_files(
+    files: List[UploadFile] = File(description="Multiple files as UploadFile"),
+):
+    return {"filenames": [file.filename for file in files]}
 
 
 
