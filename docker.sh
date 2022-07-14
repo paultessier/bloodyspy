@@ -1,16 +1,23 @@
-version=1.0.0
-port=8001
+app_name=bloodyspy
+prev_version=1.0.0
+version=1.0.1
+port=5050
 
-if [[ "$(docker images -q spyblood:${version} 2> /dev/null)" == "" ]]; then
-    echo building docker image spyblood:${version} ...
-    docker build -t spyblood:${version} .
+# Launch docker daemon if stopped
+if [[ "$(pidof dockerd 2> /dev/null)" == "" ]]; then
+    echo Launching docker daemon ...
+    sudo service docker start
 fi
 
-docker run -it -d --name spyblood${version} -p ${port}:8000 spyblood:${version}
+# Build image if not existing
+if [[ "$(docker images -q ${app_name}:${version} 2> /dev/null)" == "" ]]; then
+    echo building docker image ${app_name}:${version} ...
+    docker build -t ${app_name}:${version} .
+fi
 
 # CHECKS
-# docker image ls | grep spyblood
-# docker container ls | grep spyblood${version}
+# docker image ls | grep ${app_name}
+# docker container ls | grep ${app_name}${version}
 docker image ls
 docker container ls
 
@@ -18,8 +25,20 @@ docker container ls
 docker login
 
 # UPLOAD IMAGE
-docker tag spyblood:${version} paultessier/spyblood:${version}
-docker image push paultessier/spyblood:${version}
+docker tag ${app_name}:${version} paultessier/${app_name}:${version}
+docker image push paultessier/${app_name}:${version}
 
 # LOGOUT FROM DOCKER HUB
 docker logout
+
+
+# LAUNCH THE APPLICATION
+docker container stop ${app_name}${previous_version}
+docker run -it -d --name ${app_name}${version} -p ${port}:8000 ${app_name}:${version}
+echo "=============================================================="
+echo "=============================================================="
+echo application address: http://localhost:${port}
+echo to investigate: docker exec -it ${app_name}${version} /bin/bash
+echo "=============================================================="
+echo "=============================================================="
+

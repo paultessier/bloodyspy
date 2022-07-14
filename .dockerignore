@@ -1,7 +1,7 @@
 tmp_img
 tmp_img/*
-# models/*
-# resources/*
+models/all
+models/all/*
 data_sample
 data_sample/*
 docker.sh
