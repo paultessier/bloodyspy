@@ -10,7 +10,7 @@ services:
     #   - "8000:8000"
     ports:
       - target: 8000
-        published: 8050
+        published: 8000
         protocol: tcp
         mode: host
 

@@ -1,3 +1,5 @@
+resources/confusion_matrix
+resources/deep_learning_curves
 data_sample/*
 models/*
 data_unlabelled/*

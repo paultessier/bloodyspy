@@ -1,5 +1,7 @@
 # tmp
 tmp/*
+resources
+resources/*
 models/all
 models/all/*
 # data_sample
