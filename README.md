@@ -1,7 +1,7 @@
 # BloodySpy <img src="resources/imgs/icon_b.png" width=30>
 Blood cell categorization
 
-<img src="resources/imgs/blood_cells_in_vein.jpg" width=400>
+<img src="resources/imgs/blood_cells_in_vein.jpg" width=600>
 
 <br/>
 
@@ -10,8 +10,6 @@ Blood cell categorization
 Blood is an essential element for human survival. It allows the supply of oxygen and nutrients to the organs, blood coagulation but also the immune defenses transport against bacterial and viral attacks. Blood contains several cell types that perform these functions. Thus the appareance of disturbances in blood composition is a good marker of pathologies presence.
 
 Today hematological diseases are diagnosed in more than 80% of cases thanks to quantitative and qualitative analyzes of the different cell types. However, the morphological differentiation of normal and abnormal blood cell types is a difficult task requiring significant expertise. In order to overcome the lack of expertise in certain medical circles, the creation of auto diagnostic models of human blood pathologies would therefore be an interesting tool to explore. Therefore this project consists of developing computer vision models capable of identifying the different types of blood cells through the analysis of human blood cells collected by blood smears. The training of these models will be carried out on a database of blood cells from healthy subjects.
-
-<br/>
 
 ### Blood cell types description
 
