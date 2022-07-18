@@ -1,0 +1,88 @@
+version: "3.9"
+services:
+  api_bloodyspy:
+    image: paultessier/bloodyspy:1.0.0
+    container_name: bloodyspy_compose
+    # networks:
+    #   - my_network_from_compose
+    volumes:
+      - ./data_sample:/app/data_sample
+      - ./data_unlabelled:/app/data_unlabelled
+    ports:
+      - target: 8000
+        published: 8001
+        protocol: tcp
+        mode: host
+    environment:
+      PASSWORD: "root_password"
+  # elasticsearch:
+  #   image: elasticsearch:7.2.0
+  #   container_name: my_es_from_compose
+  #   # networks:
+  #   #   - my_network_from_compose
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   environment:
+  #     discovery.type: single-node
+# networks:
+#   my_network_from_compose:
+
+
+# version: "3.9"
+# services:
+#   jupyter:
+#     image: jupyter/minimal-notebook
+#     container_name: my_jupyter_from_compose
+#     networks:
+#       - my_network_from_compose
+#     volumes:
+#       - .:/home/jovyan/work
+#     ports:
+#       - target: 8888
+#         published: 4444
+#         protocol: tcp
+#         mode: host
+#     environment:
+#       JUPYTER_TOKEN: "bonjour"
+#   elasticsearch:
+#     image: elasticsearch:7.2.0
+#     container_name: my_es_from_compose
+#     networks:
+#       - my_network_from_compose
+#     ports:
+#       - "9200:9200"
+#       - "9300:9300"
+#     environment:
+#       discovery.type: single-node
+# networks:
+#   my_network_from_compose:
+
+# version: "3.9"
+# services:
+#   api_sentiments:
+#     image: datascientest/fastapi:1.0.0
+#     container_name: api_sentiments
+#     ports:
+#       - "8000:8000"
+#   authentification:
+#     image: tests_authentification:latest
+#     container_name: tests_authentification
+#     volumes:
+#       - ./test_results:/my_server/log
+#     environment:
+#       LOG: 1
+#   authorization:
+#     image: tests_authorization:latest
+#     container_name: tests_authorization
+#     volumes:
+#       - ./test_results:/my_server/log
+#     environment:
+#       LOG: 1
+#   content:
+#     image: tests_content:latest
+#     container_name: tests_content
+#     volumes:
+#       - ./test_results:/my_server/log
+#     environment:
+#       LOG: 1

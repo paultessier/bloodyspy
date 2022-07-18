@@ -1,7 +1,11 @@
 app_name=bloodyspy
-prev_version=1.0.0
-version=1.0.1
-port=5050
+version=1.0.0
+port=8000
+
+# stop all container and remove images
+docker container stop ${app_name}
+docker container rm ${app_name}
+docker image rm ${app_name}:${version}
 
 # Launch docker daemon if stopped
 if [[ "$(pidof dockerd 2> /dev/null)" == "" ]]; then
@@ -21,24 +25,14 @@ fi
 docker image ls
 docker container ls
 
-# LOGIN TO DOCKER HUB and fill username & password
-docker login
-
-# UPLOAD IMAGE
-docker tag ${app_name}:${version} paultessier/${app_name}:${version}
-docker image push paultessier/${app_name}:${version}
-
-# LOGOUT FROM DOCKER HUB
-docker logout
-
 
 # LAUNCH THE APPLICATION
-docker container stop ${app_name}${previous_version}
-docker run -it -d --name ${app_name}${version} -p ${port}:8000 ${app_name}:${version}
+docker run -it -d --name ${app_name} -p ${port}:8000 ${app_name}:${version}
 echo "=============================================================="
 echo "=============================================================="
 echo application address: http://localhost:${port}
-echo to investigate: docker exec -it ${app_name}${version} /bin/bash
+echo to investigate: docker exec -it ${app_name} /bin/bash
 echo "=============================================================="
 echo "=============================================================="
+
 

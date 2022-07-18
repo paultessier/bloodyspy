@@ -1,6 +1,7 @@
 data_sample/*
 models/*
-tmp_img/*
+data_unlabelled/*
+tmp/*
 .DS_Store
 __pycache__/*
 .Rhistory

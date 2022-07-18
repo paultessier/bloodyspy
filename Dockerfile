@@ -1,23 +1,36 @@
-# FROM python:3.8
 FROM python:3.8-slim-buster
-# RUN apt-get update && apt-get install libgl1
-# RUN apt-get update
-# RUN apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get update
+RUN apt-get install ffmpeg libsm6 libxext6  -y
+# RUN /usr/local/bin/python -m pip install --upgrade pip
 WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 COPY . .
 EXPOSE 8000
-# CMD streamlit run app.py --server.port 8000 --logger.level=debug 2> streamlit_logs.log
-# CMD uvicorn app:api --reload
-CMD uvicorn app:api
+CMD uvicorn app:api --port 8000
+# CMD ["uvicorn", "app:api", "--host", "0.0.0.0", "--port", "8000"]
 
-# FROM python:3-slim
+
+# FROM ubuntu:20.04
+# RUN apt update && apt install python3-pip libmysqlclient-dev
 # WORKDIR /app
 # COPY requirements.txt requirements.txt
-# RUN pip3 install -r requirements.txt
+# RUN pip install -r requirements.txt
 # COPY . .
-# CMD [ "streamlit", "run",  "app.py"]
+# EXPOSE 8000
+# CMD uvicorn app:server --host 0.0.0.0
+
+
+# FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+# WORKDIR /app
+# COPY . .
+
+# FROM python:3.7
+# RUN pip install fastapi uvicorn
+# EXPOSE 80
+# COPY ./app /app
+# CMD ["uvicorn", "app:api", "--host", "0.0.0.0", "--port", "80"]
+
 
 # FROM debian:latest
 # RUN apt-get update && apt-get install python3-pip -y
