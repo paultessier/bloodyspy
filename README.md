@@ -1,7 +1,4 @@
-
-<img src="resources/imgs/blood_cells_in_vein.jpg">
-
-# BloodySpy
+# BloodySpy <img src="resources/imgs/icon_b.png" width=20>
 Blood cell categorization
 
 
@@ -28,6 +25,14 @@ Blood cell categorization
 </table>
 <br/><br/>
 
+
+<img src="resources/imgs/blood_cells_in_vein.jpg" width=100>
+
+## Dataset & article
+
+ - [*Access to dataset*](https://data.mendeley.com/datasets/snkd93bnjr/1)
+ - [*Access to article*](https://www.sciencedirect.com/science/article/abs/pii/S0169260719303578?via%3Dihub)
+
 ## Introduction
 
 Blood is an essential element for human survival. It allows the supply of oxygen and nutrients to the organs, blood coagulation but also the immune defenses transport against bacterial and viral attacks. Blood contains several cell types that perform these functions. Thus the appareance of disturbances in blood composition is a good marker of pathologies presence.
@@ -43,17 +48,11 @@ From a structural point of view, the leucocytes can be subdivided into three maj
 
 During disease onset, it is also possible to find **immature granulocytes** that contain the classes of myeloblast, promyelocyte, myelocyte and metamyelocyte. Usually they are in the spinal bone but a presence of a high level of those cells in the blood could be the sign of a cancer. That's why their detection and their quantification in the blood are important for disease diagnosis.
 
-<img src="resources/imgs/blood_cell_types.jpg">
-<img src="resources/imgs/immature_granulocytes.gif">
+<img src="resources/imgs/blood_cell_types.jpg" width=20>
+<img src="resources/imgs/immature_granulocytes.gif" width=20>
 
-url1 = "https://data.mendeley.com/datasets/snkd93bnjr/1"
-    col1.markdown('**Access to dataset** [link](%s)' % url1, unsafe_allow_html=True)
-    url2 = "https://www.sciencedirect.com/science/article/abs/pii/S0169260719303578?via%3Dihub"
-    col1.markdown('**Access to article** [link](%s)' % url2, unsafe_allow_html=True)
 
-Main accesses:
- - [*Access to dataset*](https://data.mendeley.com/datasets/snkd93bnjr/1)
- - [*Access to article*](https://www.sciencedirect.com/science/article/abs/pii/S0169260719303578?via%3Dihub)
+
 
 
 ***
