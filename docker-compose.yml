@@ -3,32 +3,16 @@ services:
   api_bloodyspy:
     image: paultessier/bloodyspy:1.0.0
     container_name: bloodyspy_compose
-    # networks:
-    #   - my_network_from_compose
     volumes:
       - ./data_sample:/app/data_sample
       - ./data_unlabelled:/app/data_unlabelled
-    ports:
-      - "8000:8000"
     # ports:
-    #   - target: 8000
-    #     published: 8001
-    #     protocol: tcp
-    #     mode: host
-    environment:
-      PASSWORD: "root_password"
-  # elasticsearch:
-  #   image: elasticsearch:7.2.0
-  #   container_name: my_es_from_compose
-  #   # networks:
-  #   #   - my_network_from_compose
-  #   ports:
-  #     - "9200:9200"
-  #     - "9300:9300"
-  #   environment:
-  #     discovery.type: single-node
-# networks:
-#   my_network_from_compose:
+    #   - "8000:8000"
+    ports:
+      - target: 8000
+        published: 8050
+        protocol: tcp
+        mode: host
 
 
 # version: "3.9"

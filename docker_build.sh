@@ -27,7 +27,7 @@ docker container ls
 
 
 # LAUNCH THE APPLICATION
-docker run -it -d --name ${app_name} -p ${port}:8000 ${app_name}:${version}
+docker run -it -d --rm --name ${app_name} -p ${port}:8000 ${app_name}:${version}
 echo "=============================================================="
 echo "=============================================================="
 echo application address: http://localhost:${port}
