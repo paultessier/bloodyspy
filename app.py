@@ -19,15 +19,6 @@ import os
 # Manifeste OpenAPI (Json des fonctions)
 # http://localhost:8000/openapi.json
 
-# import os
-# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-#SOLVING ISSUE : rebuild TensorFlow with the appropriate compiler flags
-#Your kernel may have been built without NUMA support
-
-
-
-
-
 # ==== PARAMETERS ===================================================================
 
 # List of blood cell types
@@ -42,11 +33,10 @@ model_code2name={
 }
 
 
-
 # ==== MAIN ===================================================================
 
 api = FastAPI(
-    title="bloodyspy API",
+    title="Bloodyspy API",
     description="This API classes images among {} blood cell types :\n{}"
     .format(
         len(cell_types),
