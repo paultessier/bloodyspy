@@ -53,7 +53,6 @@ You can launch the app through several channels
 **virtual environment**
 
 ```shell
-cd <your_local_directory>
 git clone https://github.com/paultessier/bloodyspy
 cd bloodyspy
 virtualenv env
@@ -72,7 +71,6 @@ The app should then be available at [localhost:8001](http://localhost:8001/docs)
 You can also run the Streamlit app in a [Docker](https://www.docker.com/) container. To do so, you will first need to build the Docker image :
 
 ```shell
-cd <your_local_directory>
 git clone https://github.com/paultessier/bloodyspy
 cd bloodyspy
 docker build -t bloodyspy:1.0.0 .
@@ -86,7 +84,6 @@ The app should then be available at [localhost:8002](http://localhost:8002/docs)
 **Docker compose**
 
 ```shell
-cd <your_local_directory>
 git clone https://github.com/paultessier/bloodyspy
 cd bloodyspy
 docker-compose up

@@ -2,7 +2,7 @@ resources/confusion_matrix
 resources/deep_learning_curves
 data_sample/*
 models/*
-data_unlabelled/*
+# data_unlabelled/*
 tmp/*
 .DS_Store
 __pycache__/*
