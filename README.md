@@ -47,6 +47,8 @@ During disease onset, it is also possible to find **immature granulocytes** that
 ## Fast API App
 You can launch the app through several channels
 
+<br/>
+
 <!-- ### Directly from this repository -->
 **virtual environment**
 
@@ -63,6 +65,7 @@ uvicorn app:api --port 8001
 
 The app should then be available at [localhost:8001](http://localhost:8001/docs).
 
+<br/>
 
 **Docker build**
 
@@ -78,6 +81,7 @@ docker run --it --rm -d --name bloodyspy -p 8002:8000 bloodyspy:1.0.0
 
 The app should then be available at [localhost:8002](http://localhost:8002/docs).
 
+<br/>
 
 **Docker compose**
 
