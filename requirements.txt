@@ -1,6 +1,8 @@
-fastapi==0.78.0
+fastapi==0.79.0
 uvicorn==0.17.6
 numpy==1.22.3
-opencv-python==4.6.0.66
+opencv-python==4.5.4.60
 tensorflow==2.7.0
 python-multipart==0.0.5
+passlib==1.7.4
+bcrypt==3.2.2
