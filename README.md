@@ -1,7 +1,9 @@
-# BloodySpy <img src="resources/imgs/icon_b.png" width=40>
+# BloodySpy <img src="resources/imgs/icon_b.png" width=30>
 Blood cell categorization
 
-<img src="resources/imgs/blood_cells_in_vein.jpg" width=200>
+<img src="resources/imgs/blood_cells_in_vein.jpg" width=400>
+
+<br/>
 
 ## Introduction
 
@@ -9,8 +11,9 @@ Blood is an essential element for human survival. It allows the supply of oxygen
 
 Today hematological diseases are diagnosed in more than 80% of cases thanks to quantitative and qualitative analyzes of the different cell types. However, the morphological differentiation of normal and abnormal blood cell types is a difficult task requiring significant expertise. In order to overcome the lack of expertise in certain medical circles, the creation of auto diagnostic models of human blood pathologies would therefore be an interesting tool to explore. Therefore this project consists of developing computer vision models capable of identifying the different types of blood cells through the analysis of human blood cells collected by blood smears. The training of these models will be carried out on a database of blood cells from healthy subjects.
 
+<br/>
 
-## Blood cell types description
+### Blood cell types description
 
 <table border="0">
  <colgroup>
@@ -24,7 +27,7 @@ Today hematological diseases are diagnosed in more than 80% of cases thanks to q
   </td>
  </tr>
 </table>
-<br/><br/>
+<br/>
 <!-- <img src="resources/imgs/blood_cell_types.jpg" width=20>
 <img src="resources/imgs/immature_granulocytes.gif" width=20> -->
 
@@ -34,10 +37,14 @@ From a structural point of view, the leucocytes can be subdivided into three maj
 
 During disease onset, it is also possible to find **immature granulocytes** that contain the classes of myeloblast, promyelocyte, myelocyte and metamyelocyte. Usually they are in the spinal bone but a presence of a high level of those cells in the blood could be the sign of a cancer. That's why their detection and their quantification in the blood are important for disease diagnosis.
 
+<br/>
+
 ## Links
 
  - [*Access to dataset*](https://data.mendeley.com/datasets/snkd93bnjr/1)
  - [*Access to article*](https://www.sciencedirect.com/science/article/abs/pii/S0169260719303578?via%3Dihub)
+
+<br/>
 
 ## Fast API App
 You can launch the app through several channels
@@ -85,6 +92,7 @@ docker-compose up
 
 The app should then be available at [localhost:8000](http://localhost:8000/docs).
 
+<br/>
 
 ## Author
 
