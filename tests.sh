@@ -59,7 +59,7 @@ curl -X 'POST' \
 echo " "
 echo " "
 echo "===================================================================================="
-echo "   TEST 3 BIS: SUBMIT SEVERAL FILES WHOSE 1 TEXT FILE -> ERROR EXPECTED"
+echo "   TEST 3 BIS: SUBMIT SEVERAL FILES WHOSE 1 TEXT FILE -> ERROR EXPECTED FOR THIS FILE"
 echo "===================================================================================="
 curl -X 'POST' \
   'http://localhost:8000/bloodyspy/images/' \
