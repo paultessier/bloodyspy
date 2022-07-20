@@ -2,7 +2,6 @@ resources/confusion_matrix
 resources/deep_learning_curves
 # data/sample/*
 fastapi/models/*
-tmp/*
 .DS_Store
 __pycache__/*
 .Rhistory
