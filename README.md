@@ -1,5 +1,5 @@
 # BloodySpy <img src="resources/imgs/icon_b.png" width=30> 
-<h2><em> Blood cells categorization</em></h2>
+<h3><em> Blood cells categorization</em></h3>
 
 <img src="resources/imgs/blood_cells_in_vein.jpg" width=600>
 
