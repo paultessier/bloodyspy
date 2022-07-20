@@ -98,6 +98,8 @@ docker-compose up
 
 The app should then be available at this [link](http://localhost:8000/docs).
 
+<br/>
+
 **Docker Hub (mostly recommended)**
 
 By running the simple command below, the image will be automatically pulled from [Docker Hub](https://hub.docker.com/repository/docker/paultessier/bloodyspy/tags).
