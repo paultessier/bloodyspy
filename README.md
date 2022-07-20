@@ -102,7 +102,7 @@ The app should then be available at this [link](http://localhost:8000/docs).
 
 **Docker hub (mostly recommended)**
 
-By running the simple command below, the image will be automatically pulled from [Docker Hub](https://hub.docker.com/repository/docker/paultessier/bloodyspy/tags).
+By running the simple command below, the image will be automatically pulled from [Docker Hub](https://hub.docker.com/repository/docker/paultessier/bloodyspy/tags) and a docker container will be launched.
 
 ```shell
 docker run -it --rm -d --name bloodyspy -p 8003:8000 paultessier/bloodyspy:1.0.0
