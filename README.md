@@ -114,5 +114,5 @@ The app should then be available at this [link](http://localhost:8003/docs).
 
 ## Author
 
-[Paul TESSIER](https://github.com/paultessier)[<img src="resources/imgs/logo_linkedin.png" width=20>](https://www.linkedin.com/in/p4ul-tessier/)
-
+Paul TESSIER
+[<img src="resources/imgs/logo_github.png" width=20>](https://github.com/paultessier)  [<img src="resources/imgs/logo_linkedin.png" width=20>](https://www.linkedin.com/in/p4ul-tessier/)
