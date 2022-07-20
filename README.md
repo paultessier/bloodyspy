@@ -76,7 +76,7 @@ You can also run the Fast API app in a [docker](https://www.docker.com/) contain
 git clone https://github.com/paultessier/bloodyspy
 cd bloodyspy
 docker build -t bloodyspy:1.0.0 .
-docker run --it --rm -d --name bloodyspy -p 8002:8000 bloodyspy:1.0.0
+docker run -it --rm -d --name bloodyspy -p 8002:8000 bloodyspy:1.0.0
 ```
 
 The app should then be available at this [link](http://localhost:8002/docs).
@@ -105,7 +105,7 @@ The app should then be available at this [link](http://localhost:8000/docs).
 By running the simple command below, the image will be automatically pulled from [Docker Hub](https://hub.docker.com/repository/docker/paultessier/bloodyspy/tags).
 
 ```shell
-docker run --it --rm -d --name bloodyspy -p 8003:8000 paultessier/bloodyspy:1.0.0
+docker run -it --rm -d --name bloodyspy -p 8003:8000 paultessier/bloodyspy:1.0.0
 ```
 
 The app should then be available at this [link](http://localhost:8003/docs).
