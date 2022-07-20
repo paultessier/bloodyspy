@@ -50,7 +50,9 @@ You can launch the app through several channels
 <br/>
 
 <!-- ### Directly from this repository -->
-**virtual environment**
+**Locally**
+
+It is advised to create a virtual environment before running the application.
 
 ```shell
 git clone https://github.com/paultessier/bloodyspy
@@ -58,32 +60,32 @@ cd bloodyspy
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
-uvicorn app:api --host 0.0.0.0 --port 8000
+uvicorn app:api --port 8001
 ```
 
-The app should then be available [here](http://0.0.0.0:8000/docs).
+The app should then be available at this [link](http://localhost:8001/docs).
 
 <br/>
 
 **Docker build**
 
-You can also run the Fast API app in a [Docker](https://www.docker.com/) container. To do so, you will first need to build the Docker image :
+You can also run the Fast API app in a [docker](https://www.docker.com/) container. To do so, you will first need to build the Docker image :
 
 ```shell
 git clone https://github.com/paultessier/bloodyspy
 cd bloodyspy
 docker build -t bloodyspy:1.0.0 .
-docker run --it --rm -d --name bloodyspy -p 8050:8000 bloodyspy:1.0.0
+docker run --it --rm -d --name bloodyspy -p 8002:8000 bloodyspy:1.0.0
 ```
 
-The app should then be available [here](http://localhost:8050/docs).
+The app should then be available at this [link](http://localhost:8002/docs).
 
 <br/>
 
 **Docker compose**
 
 You can also download the image from [Docker Hub](https://hub.docker.com/). It will automatically be pulled from [there](https://hub.docker.com/repository/docker/paultessier/bloodyspy/tags) by running the [docker-compose](docker-compose.yml) file.
-However, you need to build 2 other images - [curl-test](tests/curl) and [py-test](tests/python) - before, which will test the api end points.
+However, you need to build 2 other images ([curl-test](tests/curl) and [py-test](tests/python)) before, which will test the api end points.
 
 ```shell
 git clone https://github.com/paultessier/bloodyspy
@@ -93,7 +95,7 @@ docker build -t bloodyspy:py_test ./tests/python
 docker-compose up
 ```
 
-The app should then be available [here](http://localhost:8000/docs).
+The app should then be available at this [link](http://localhost:8000/docs).
 
 <br/>
 
