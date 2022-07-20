@@ -45,7 +45,8 @@ During disease onset, it is also possible to find **immature granulocytes** that
 <br/>
 
 ## Fast API App
-You can launch the app through several channels
+There are different ways to launch the app.
+The most recommended way will be the last one presented here, by downloading the image from Docker Hub.
 
 <br/>
 
@@ -96,6 +97,16 @@ docker-compose up
 ```
 
 The app should then be available at this [link](http://localhost:8000/docs).
+
+**Docker Hub (mostly recommended)**
+
+By running the simple command below, the image will be automatically pulled from [Docker Hub](https://hub.docker.com/repository/docker/paultessier/bloodyspy/tags).
+
+```shell
+docker run --it --rm -d --name bloodyspy -p 8003:8000 paultessier/bloodyspy:1.0.0
+```
+
+The app should then be available at this [link](http://localhost:8003/docs).
 
 <br/>
 
