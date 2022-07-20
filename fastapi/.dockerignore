@@ -1,0 +1,4 @@
+models/all
+models/all/*
+Dockerfile
+tmp/*

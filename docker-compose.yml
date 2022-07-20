@@ -1,74 +1,50 @@
 version: "3.9"
 services:
+
   api_bloodyspy:
-    image: paultessier/bloodyspy:1.0.0
-    container_name: bloodyspy_compose
-    volumes:
-      - ./data_sample:/app/data_sample
-      - ./data_unlabelled:/app/data_unlabelled
-    # ports:
-    #   - "8000:8000"
+    image: paultessier/bloodyspy:${APP_VERSION}
+    container_name: bloodyspy-container
+    networks:
+      - fastapi-testing-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     ports:
       - target: 8000
         published: 8000
         protocol: tcp
         mode: host
 
+  test1_bloodyspy:
+    image: bloodyspy:curl_test
+    container_name: test-curl-container
+    networks:
+      - fastapi-testing-network
+    depends_on:
+      - api_bloodyspy
+    volumes:
+      - ./data:/app/data
+      - ./log:/app/log
+    environment:
+      - API_CONTAINER_NAME=bloodyspy-container
 
-# version: "3.9"
-# services:
-#   jupyter:
-#     image: jupyter/minimal-notebook
-#     container_name: my_jupyter_from_compose
-#     networks:
-#       - my_network_from_compose
-#     volumes:
-#       - .:/home/jovyan/work
-#     ports:
-#       - target: 8888
-#         published: 4444
-#         protocol: tcp
-#         mode: host
-#     environment:
-#       JUPYTER_TOKEN: "bonjour"
-#   elasticsearch:
-#     image: elasticsearch:7.2.0
-#     container_name: my_es_from_compose
-#     networks:
-#       - my_network_from_compose
-#     ports:
-#       - "9200:9200"
-#       - "9300:9300"
-#     environment:
-#       discovery.type: single-node
-# networks:
-#   my_network_from_compose:
+  test2_bloodyspy:
+    image: bloodyspy:py_test
+    container_name: test-py-container
+    networks:
+      - fastapi-testing-network
+    depends_on:
+      - api_bloodyspy
+    volumes:
+      - ./data:/app/data
+      - ./log:/app/log
+    environment:
+      - SAVE_LOG=${SAVE_LOG}
+      - DEV_MODE=OFF
+      - API_CONTAINER_NAME=bloodyspy-container
 
-# version: "3.9"
-# services:
-#   api_sentiments:
-#     image: datascientest/fastapi:1.0.0
-#     container_name: api_sentiments
-#     ports:
-#       - "8000:8000"
-#   authentification:
-#     image: tests_authentification:latest
-#     container_name: tests_authentification
-#     volumes:
-#       - ./test_results:/my_server/log
-#     environment:
-#       LOG: 1
-#   authorization:
-#     image: tests_authorization:latest
-#     container_name: tests_authorization
-#     volumes:
-#       - ./test_results:/my_server/log
-#     environment:
-#       LOG: 1
-#   content:
-#     image: tests_content:latest
-#     container_name: tests_content
-#     volumes:
-#       - ./test_results:/my_server/log
-#     environment:
-#       LOG: 1
+networks:
+  fastapi-testing-network:

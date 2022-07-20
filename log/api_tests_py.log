@@ -1,0 +1,1045 @@
+
+========================================================
+REQUEST DATE TIME : 20/07/2022 19:32:56
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    
+========================================================
+REQUEST DATE TIME : 20/07/2022 17:58:01
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    
+========================================================
+REQUEST DATE TIME : 20/07/2022 18:05:53
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    
+========================================================
+REQUEST DATE TIME : 20/07/2022 18:37:16
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    
+========================================================
+REQUEST DATE TIME : 20/07/2022 18:38:06
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    
+========================================================
+REQUEST DATE TIME : 20/07/2022 18:38:38
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    
+========================================================
+REQUEST DATE TIME : 20/07/2022 18:41:18
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    
+========================================================
+REQUEST DATE TIME : 20/07/2022 18:43:13
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    
+========================================================
+REQUEST DATE TIME : 20/07/2022 18:59:31
+========================================================
+
+========================================================
+    Status test
+========================================================
+
+    request status_code: 200
+    status: 1
+    message: Hello from a public endpoint. You don't need to be authenticated to see this message.
+    ==>  SUCCESS
+    
+========================================================
+    Authorization test
+========================================================
+
+
+    request status code: 200
+    status: 1
+    message: Hello root from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello alice from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+    request status code: 200
+    status: 1
+    message: Hello paul from a private endpoint. You can see this message because we're authorizing your connection.
+    ==>  SUCCESS
+
+        
+========================================================
+    Content test
+========================================================
+
+# LOGIN USED
+    | username : paul
+    | Authorization : Basic cGF1bDpoZWxsb19wd2Q=
+
+    
+--- FILE N°1 -----------------------------
+--- "data/sample/basophil/BA_53335.jpg"
+    request status code: 200
+    expected blood cell type: basophil
+    predicted blood cell type: basophil
+    probability: 97.6 %
+    ==>  SUCCESS
+        
+--- FILE N°2 -----------------------------
+--- "data/sample/eosinophil/EO_676281.jpg"
+    request status code: 200
+    expected blood cell type: eosinophil
+    predicted blood cell type: eosinophil
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+--- FILE N°3 -----------------------------
+--- "data/sample/erythroblast/ERB_507848.jpg"
+    request status code: 200
+    expected blood cell type: erythroblast
+    predicted blood cell type: erythroblast
+    probability: 99.44 %
+    ==>  SUCCESS
+        
+--- FILE N°4 -----------------------------
+--- "data/sample/ig/MMY_677451.jpg"
+    request status code: 200
+    expected blood cell type: immature granulocyte
+    predicted blood cell type: immature granulocyte
+    probability: 94.5 %
+    ==>  SUCCESS
+        
+--- FILE N°5 -----------------------------
+--- "data/sample/lymphocyte/LY_301320.jpg"
+    request status code: 200
+    expected blood cell type: lymphocyte
+    predicted blood cell type: lymphocyte
+    probability: 98.42 %
+    ==>  SUCCESS
+        
+--- FILE N°6 -----------------------------
+--- "data/sample/monocyte/MO_254452.jpg"
+    request status code: 200
+    expected blood cell type: monocyte
+    predicted blood cell type: monocyte
+    probability: 99.65 %
+    ==>  SUCCESS
+        
+--- FILE N°7 -----------------------------
+--- "data/sample/neutrophil/BNE_436569.jpg"
+    request status code: 200
+    expected blood cell type: neutrophil
+    predicted blood cell type: neutrophil
+    probability: 99.67 %
+    ==>  SUCCESS
+        
+--- FILE N°8 -----------------------------
+--- "data/sample/platelet/PLATELET_38734.jpg"
+    request status code: 200
+    expected blood cell type: platelet
+    predicted blood cell type: platelet
+    probability: 100.0 %
+    ==>  SUCCESS
+        
+========================================================
+    Test overview
+========================================================
+
+    Test results: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ==> Overall test success: True
+    

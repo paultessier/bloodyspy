@@ -1,0 +1,62 @@
+=====================================================================
+The following base 64 conversion was done for authorization header:
+Authorization: Basic cm9vdDpyb290X3Bhc3N3b3Jk
+Authorization: Basic YWxpY2U6d29uZGVybGFuZA==
+Authorization: Basic cGF1bDpoZWxsb19wd2Q=
+=====================================================================
+ 
+ 
+====================================================================================
+   TEST 1: STATUS
+====================================================================================
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0HTTP/1.1 200 OK
+100   110  100   110    0     0   3623      0 --:--:-- --:--:-- --:--:--  3666
+date: Wed, 20 Jul 2022 18:59:28 GMT
+server: uvicorn
+content-length: 110
+content-type: application/json
+
+{"status":1,"message":"Hello from a public endpoint. You don't need to be authenticated to see this message."} 
+ 
+====================================================================================
+   TEST 1 BIS: STATUS AUTHORIZED
+====================================================================================
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   129  100   129    0     0    631      0 --:--:-- --:--:-- --:--:--   632
+{"status":1,"message":"Hello alice from a private endpoint. You can see this message because we're authorizing your connection."} 
+ 
+====================================================================================
+   TEST 2: GET CELL BLOOD TYPE FOR 1 IMAGE
+====================================================================================
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 21908    0     0  100 21908      0  96876 --:--:-- --:--:-- --:--:-- 96511100 22200  100   292  100 21908    754  56609 --:--:-- --:--:-- --:--:-- 57364
+{"filename":"10030044131_188.jpg","model":"TL VGG19","predictions":{"neutrophil":0.4,"eosinophil":0.66,"immature granulocyte":76.83,"platelet":0.0,"erythroblast":1.99,"monocyte":19.14,"basophil":0.93,"lymphocyte":0.05},"predicted":"immature granulocyte","probability":76.83,"username":"root"} 
+ 
+====================================================================================
+   TEST 2 BIS: SUBMIT A TEXT FILE -> ERROR EXPECTED
+====================================================================================
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   265  100    69  100   196    343    975 --:--:-- --:--:-- --:--:--  1325
+{"username":"paul","filename":"text_file.txt","error":"not an image"} 
+ 
+====================================================================================
+   TEST 3: GET CELL BLOOD TYPE FOR SEVERAL IMAGES
+====================================================================================
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 57984  100   880  100 57104   2694   170k --:--:-- --:--:-- --:--:--  173k
+{"username":"alice","10030044131_254.jpg":{"filename":"10030044131_254.jpg","model":"TL VGG19","predictions":{"neutrophil":86.64,"eosinophil":0.02,"immature granulocyte":0.79,"platelet":0.83,"erythroblast":11.69,"monocyte":0.0,"basophil":0.0,"lymphocyte":0.01},"predicted":"neutrophil","probability":86.64},"10028001812_147.jpg":{"filename":"10028001812_147.jpg","model":"TL VGG19","predictions":{"neutrophil":0.04,"eosinophil":0.01,"immature granulocyte":4.59,"platelet":0.13,"erythroblast":44.87,"monocyte":0.09,"basophil":0.1,"lymphocyte":50.17},"predicted":"lymphocyte","probability":50.17},"10028001812_201.jpg":{"filename":"10028001812_201.jpg","model":"TL VGG19","predictions":{"neutrophil":0.04,"eosinophil":0.0,"immature granulocyte":0.2,"platelet":0.3,"erythroblast":99.45,"monocyte":0.0,"basophil":0.0,"lymphocyte":0.02},"predicted":"erythroblast","probability":99.45}} 
+ 
+====================================================================================
+   TEST 3 BIS: SUBMIT SEVERAL FILES WHOSE 1 TEXT FILE -> ERROR EXPECTED FOR THIS FILE
+====================================================================================
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 32735    0     0  100 32735      0   144k --:--:-- --:--:-- --:--:--  143k100 33089  100   354  100 32735   1450   130k --:--:-- --:--:-- --:--:--  131k
+{"username":"alice","text_file.txt":{"filename":"text_file.txt","error":"not an image"},"monocyt.jpg":{"filename":"monocyt.jpg","model":"TL VGG19","predictions":{"neutrophil":0.0,"eosinophil":0.0,"immature granulocyte":2.11,"platelet":0.0,"erythroblast":0.01,"monocyte":97.87,"basophil":0.01,"lymphocyte":0.0},"predicted":"monocyte","probability":97.87}} 
+ 

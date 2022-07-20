@@ -1,10 +1,14 @@
-version=v1
-# chmod 700 ./setup.sh
+version=v_final
+
+rm zip/project_bloodyspy_Paul_Tessier_${version}.zip
+
 zip zip/project_bloodyspy_Paul_Tessier_${version}.zip\
- ./docker-compose.yml\
- -r ./data_unlabelled\
- -r ./data_sample\
+ -r ./data\
  -r ./resources/imgs\
- ./README.md\
- ./tests.sh
+ -r ./tests\
+ -r .fastapi\
+ -r ./log\
+ ./docker-compose.yml\
+ ./main.sh\
+ ./README.md
 
