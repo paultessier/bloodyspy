@@ -47,6 +47,9 @@ During disease onset, it is also possible to find **immature granulocytes** that
 ## Fast API App
 There are different ways to launch the app.
 The most recommended way will be the last one presented here, which will automatically pull the image from Docker Hub and run a Docker container.
+Please note that you can access to the protected end points by using the following authentification:
+ - username: alice
+ - password: wonderland
 
 <br/>
 
